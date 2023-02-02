@@ -1,7 +1,10 @@
+import Post from "./Post/Post.js";
+
 export default function Posts() {
     return (
         <section>
-            Posts
+        <Post />
+        <Post />
         </section>
     );
 }
