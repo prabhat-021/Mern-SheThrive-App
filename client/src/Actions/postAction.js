@@ -1,10 +1,9 @@
 import * as api from "../API";
 
-// Action Creators gग= are the function which return a function (action )
+// Action Creators are the function which return a function (action )
 export const getPosts = () => async (dispatch) => {
 
     try {
-        
         const { data } = await api.fetchPosts();
         dispatch({ type: "FETCH_ALL", payload: data });
 
@@ -12,4 +11,15 @@ export const getPosts = () => async (dispatch) => {
         console.error(error.message);
     }
 
+}
+
+export const createPost = (post) => async (dispatch) => {
+
+    try {
+        const { data } = await api.createPost(post);
+        dispatch({ type: "CREATE", payload: data });
+
+    } catch (error) {
+        console.error(error.message);
+    }
 }

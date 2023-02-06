@@ -2,6 +2,8 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useState } from "react";
 import useStyles from "./style.js";
 import FileBase from 'react-file-base64';
+import { useDispatch } from "react-redux";
+import { createPost } from "../../Actions/postAction.js";
 
 export default function Form() {
 
@@ -9,9 +11,12 @@ export default function Form() {
         creator: "", title: "", message: "", tags: "", selectedFile: ""
     })
     const classes = useStyles();
+    const dispatch = useDispatch();
 
-    function handleSubmit() {
+    function handleSubmit(e) {
+        e.preventDefault();
 
+        dispatch(createPost(postData));
     }
 
     function clear() {
