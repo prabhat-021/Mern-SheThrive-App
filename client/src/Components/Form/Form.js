@@ -15,8 +15,8 @@ export default function Form() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         dispatch(createPost(postData));
+        setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" })
     }
 
     function clear() {
@@ -66,7 +66,7 @@ export default function Form() {
                         onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}
                     />
                 </div>
-                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth onSubmit={handleSubmit}>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
             </form>
         </Paper>

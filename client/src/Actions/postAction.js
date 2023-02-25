@@ -1,4 +1,4 @@
-import * as api from "../API";
+import * as api from "../API/index.js";
 
 // Action Creators are the function which return a function (action )
 export const getPosts = () => async (dispatch) => {
