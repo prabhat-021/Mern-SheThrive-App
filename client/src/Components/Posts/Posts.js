@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import useStyles from "./style.js";
 import { Grid, CircularProgress } from "@material-ui/core";
 
-export default function Posts() {
+export default function Posts({ setCurrentId }) {
 
     const classes = useStyles();
     const posts = useSelector((state) => state.postReducer);
@@ -14,7 +14,7 @@ export default function Posts() {
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {posts.map((post) => (
                     <Grid key={post._id} item xs={12} sm={6}>
-                        <Post post={post} />
+                        <Post post={post} setCurrentId={setCurrentId} />
                     </Grid>
                 ))}
             </Grid>

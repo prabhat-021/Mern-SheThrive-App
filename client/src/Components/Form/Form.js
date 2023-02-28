@@ -3,24 +3,28 @@ import { useState } from "react";
 import useStyles from "./style.js";
 import FileBase from 'react-file-base64';
 import { useDispatch } from "react-redux";
-import { createPost } from "../../Actions/postAction.js";
+import { createPost, updatePost } from "../../Actions/postAction.js";
 
-export default function Form() {
+export default function Form({ currentId, setCurrentId }) {
 
     const [postData, setPostData] = useState({
         creator: "", title: "", message: "", tags: "", selectedFile: ""
-    })
+    });
     const classes = useStyles();
     const dispatch = useDispatch();
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(createPost(postData));
-        setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" })
+        if (currentId) {
+            dispatch(updatePost(currentId,postData));
+        }else{
+            dispatch(createPost(postData));
+        }
+        setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
     }
 
     function clear() {
-
+        setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
     }
 
     return (
