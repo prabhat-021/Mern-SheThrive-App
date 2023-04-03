@@ -15,7 +15,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch])
+  }, [currentId, dispatch])
 
 
   return (
@@ -31,7 +31,7 @@ export default function App() {
               <Posts setCurrentId={setCurrentId} />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCurrentId={setCurrentId}/>
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>
         </Container>
