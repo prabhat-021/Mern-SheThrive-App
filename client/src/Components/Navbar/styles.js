@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
   heading: {
     color: theme.palette.primary.main,
     textDecoration: 'none',
-    fontSize: '2em',
+    fontSize: '7vmin',
     fontWeight: 300,
   },
   image: {
