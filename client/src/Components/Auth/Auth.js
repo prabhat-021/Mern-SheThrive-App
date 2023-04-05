@@ -3,7 +3,7 @@ import useStyles from "./styles.js";
 import LockOutlineIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input.js";
 import { useState } from "react";
-import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from "@react-oauth/google";
 import Icon from "./Icon.js";
 
 export default function Auth() {
@@ -35,6 +35,11 @@ export default function Auth() {
     function GoogleSuccess(res) {
         console.log(res);
     }
+
+    // const login = useGoogleLogin({
+    //     onSuccess: tokenResponse => console.log(tokenResponse),
+    //     onError: errorResponse =>console.log(errorResponse)
+    // });
 
     return (
         <Container component="Main" maxWidth="xs">
@@ -89,23 +94,22 @@ export default function Auth() {
                             )
                         }
                     </Grid>
+                    {/* <Button
+                        className={classes.googlebutton}
+                        color="primary"
+                        fullWidth
+                        onClick={login()}
+                        startIcon={<Icon />}
+                        variant="contained"
+                    >
+                        Google Sign In
+                    </Button> */}
                     <GoogleLogin
-                        clientId="509852608937-uf3g3c7lhh8dn8oens52k6bku9a05jbl.apps.googleusercontent.com"
-                        render={(renderProps) => {
-                            <Button
-                                className={classes.googleButton}
-                                color="primary"
-                                fullWidth
-                                onClick={renderProps.disabled}
-                                startIcon={<Icon />}
-                                variant="contained"
-                            >
-                                Google Sign In
-                            </Button>
-                        }}
+                        className={classes.googlebutton}
                         onSuccess={GoogleSuccess}
-                        onFailure={GoogleFailure}
-                        cookiePolicy={'single_host_origin'}
+                        onError={GoogleFailure}
+                        theme="filled_blue"
+                        size="large"
                     />
                     <Button
                         type="submit"
