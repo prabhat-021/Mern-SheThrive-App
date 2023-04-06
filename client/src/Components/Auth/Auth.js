@@ -3,14 +3,19 @@ import useStyles from "./styles.js";
 import LockOutlineIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input.js";
 import { useState } from "react";
-import { GoogleLogin } from "@react-oauth/google";
-import Icon from "./Icon.js";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+// import Icon from "./Icon.js";
+import { useNavigate } from "react-router-dom"
 
 export default function Auth() {
 
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function handleSubmit() {
 
@@ -33,7 +38,17 @@ export default function Auth() {
     }
 
     function GoogleSuccess(res) {
-        console.log(res);
+        try {
+            // console.log(res);
+            const token = res.credential;
+            var result = jwt_decode(token);
+            // console.log(decoded);
+            dispatch({ type: "AUTH", payload: { result, token } });
+            navigate("/");
+        } catch (error) {
+            console.error(error);
+        }
+
     }
 
     // const login = useGoogleLogin({
@@ -95,10 +110,10 @@ export default function Auth() {
                         }
                     </Grid>
                     {/* <Button
-                        className={classes.googlebutton}
+                        className={classes.googleButton}
                         color="primary"
                         fullWidth
-                        onClick={login()}
+                        onClick={login}
                         startIcon={<Icon />}
                         variant="contained"
                     >
