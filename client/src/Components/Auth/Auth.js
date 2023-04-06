@@ -3,12 +3,12 @@ import useStyles from "./styles.js";
 import LockOutlineIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input.js";
 import { useState } from "react";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
 // import Icon from "./Icon.js";
 import { useNavigate } from "react-router-dom"
-import {signIn , signUp} from "../../Actions/authActions.js";
+import { signIn, signUp } from "../../Actions/authActions.js";
 
 
 export default function Auth() {
@@ -38,6 +38,7 @@ export default function Auth() {
 
     function switchMode() {
         setIsSignup(!isSignup);
+        setShowPassword(false);
     }
 
     function handleShowPassword() {
