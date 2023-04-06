@@ -8,6 +8,8 @@ import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
 // import Icon from "./Icon.js";
 import { useNavigate } from "react-router-dom"
+import {signIn , signUp} from "../../Actions/authActions.js";
+
 
 export default function Auth() {
 
@@ -16,13 +18,22 @@ export default function Auth() {
     const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        firstName: "", lastName: "", email: "", password: "", confirmPassword: ""
+    });
 
-    function handleSubmit() {
-
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log(e.target.value);
     }
 
-    function handleChange() {
-
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (isSignup) {
+            dispatch(signUp(formData, navigate));
+        } else {
+            dispatch(signIn(formData, navigate));
+        }
     }
 
     function switchMode() {
@@ -68,18 +79,17 @@ export default function Auth() {
                         {
                             isSignup && (
                                 <>
-
                                     <Input
-                                        name="firstname"
+                                        name="firstName"
                                         label="First Name"
-                                        onChange={handleChange}
+                                        handleChange={handleChange}
                                         autoFocus
                                         half
                                     />
                                     <Input
-                                        name="lastname"
+                                        name="lastName"
                                         label="Last Name"
-                                        onChange={handleChange}
+                                        handleChange={handleChange}
                                         autoFocus
                                         half
                                     />
@@ -89,13 +99,13 @@ export default function Auth() {
                         <Input
                             name="email"
                             label="Email Address"
-                            onChange={handleChange}
+                            handleChange={handleChange}
                             type="email"
                         />
                         <Input
                             name="password"
                             label="Password"
-                            onChange={handleChange}
+                            handleChange={handleChange}
                             type={showPassword ? "text" : "password"}
                             handleShowPassword={handleShowPassword}
                         />
@@ -104,7 +114,7 @@ export default function Auth() {
                                 <Input
                                     name="confirmPassword"
                                     label="Repeat Password"
-                                    onChange={handleChange}
+                                    handleChange={handleChange}
                                 />
                             )
                         }

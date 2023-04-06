@@ -3,7 +3,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import router from "./routes/postRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -26,7 +27,8 @@ app.use(function (req, res, next) {
 });
 app.use(cors(corsOptions));
 
-app.use("/posts", router);
+app.use("/posts", postRoutes);
+app.use("/user", userRoutes);
 
 mongoose.set('strictQuery', false);
 const connectDb = async () => {
