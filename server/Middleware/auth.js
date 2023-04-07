@@ -10,7 +10,7 @@ export const auth = (req, res, next) => {
             let user = jwt.verify(token, process.env.SECRET_KEY);
             req.userId = user?.id;
         } else {
-            user = jwt.decode(token);
+            let user = jwt.decode(token);
             req.userId = user?.sub;
 
         }
