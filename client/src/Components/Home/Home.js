@@ -2,7 +2,7 @@ import { Container, Grid, Grow, Paper, AppBar, TextField, Button } from "@materi
 import Form from "../Form/Form.js";
 import Posts from "../Posts/Posts.js";
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../Actions/postAction.js";
+import { getPosts, getPostBySearch } from "../../Actions/postAction.js";
 import userStyles from "./styles.js";
 import React, { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination.jsx";
@@ -11,7 +11,7 @@ import ChipInput from "material-ui-chip-input";
 
 // Constructor
 // The URLSearchParams interface defines utility methods to work with the query string of a URL.
-// Creates a URLSearchParams object given any existing query string that is on the url
+// Creates a URLSearchParams object given any existing query string that is on the url.
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -54,7 +54,10 @@ export default function Home() {
     };
 
     function searchPost() {
-        if (search) {
+        if (search.trim() || tags) {
+            
+            dispatch(getPostBySearch({ search, tags: tags.join(",") }));
+            navigate(`/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`)
 
         } else {
             navigate("/");
@@ -65,7 +68,7 @@ export default function Home() {
         <Grow in>
             <Container maxWidth="xl">
                 <Grid container justifyContent="space-between" alignitems="stretch" spacing={3} className={classes.mainContainer}>
-                    <Grid item xl={8} sm={4} md={6}>
+                    <Grid item xs={12} sm={6} md={9} >
                         <Posts setCurrentId={setCurrentId} />
                     </Grid>
                     <Grid item xs={12} sm={6} md={3}>

@@ -4,6 +4,9 @@ export const postReducer = (posts = [], action) => {
         case "FETCH_ALL":
             return action.payload;
 
+        case "FETCH_BY_SEARCH":
+            return action.payload;
+
         case "LIKE":
         case "UPDATE":
             return posts.map((post) => post._id === action.payload._id ? action.payload : post);
