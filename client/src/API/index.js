@@ -13,6 +13,7 @@ axios.interceptors.request.use((req) => {
 // POST 
 
 export const fetchPosts = () => axios.get(url);
+export const fetchPostsBySearch = (searchQuery) => axios.get(`/posts/search?searchQuery=${searchQuery.search || "none"}&tags=${searchQuery.tags || ""}`);
 export const createPost = (newPost) => axios.post(url, newPost);
 export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
 export const deletePost = (id) => axios.delete(`${url}/${id}`);
