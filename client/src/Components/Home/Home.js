@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { getPosts, getPostBySearch } from "../../Actions/postAction.js";
 import userStyles from "./styles.js";
 import React, { useEffect, useState } from "react";
-import Pagination from "../Pagination/Pagination.jsx";
+import Paginate from "../Pagination/Pagination.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
 
@@ -31,11 +31,11 @@ export default function Home() {
     const page = query.get("page") || 1;
     const searchQuery = query.get("searchQuery");
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        dispatch(getPosts());
+    //     dispatch(getPosts());
 
-    }, [currentId, dispatch]);
+    // }, [currentId, dispatch]);
 
     function handleKeyPress(e) {
         if (e.keyCode === 13) {
@@ -55,7 +55,7 @@ export default function Home() {
 
     function searchPost() {
         if (search.trim() || tags) {
-            
+
             dispatch(getPostBySearch({ search, tags: tags.join(",") }));
             navigate(`/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`)
 
@@ -94,7 +94,7 @@ export default function Home() {
                         </AppBar>
                         <Form currentId={currentId} setCurrentId={setCurrentId} />
                         <Paper className={classes.pagination} elevation={6}>
-                            <Pagination />
+                            <Paginate page={page} />
                         </Paper>
                     </Grid>
                 </Grid>
