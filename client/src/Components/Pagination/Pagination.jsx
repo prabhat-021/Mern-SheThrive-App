@@ -4,23 +4,25 @@ import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../Actions/postAction";
-import useStyles from "./styles.js";
 
 export default function Paginate({ page }) {
 
     const dispatch = useDispatch();
-    const classes = useStyles();
     const { numberOfPages } = useSelector((state) => state.postReducer);
 
     useEffect(() => {
 
         if (page) dispatch(getPosts(page));
 
-    }, [page])
+    }, [page,dispatch])
 
     return (
         <Pagination
-            className={{ ul: classes.ul }}
+            style={{
+                ul: {
+                    justifyContent: 'space-around'
+                }
+            }}
             count={numberOfPages}
             page={Number(page) || 1}
             variant="outlined"

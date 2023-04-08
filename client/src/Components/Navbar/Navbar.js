@@ -31,13 +31,13 @@ export default function Navbar() {
         }
 
         setUser(JSON.parse(localStorage.getItem("profile")));
-    }, [location]);
+    }, [location,user]);
 
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
             <Link to="/" className={classes.brandContainer}>
-                <Typography component={Link} to="/" className={classes.heading} variant="h2" alignitems="center">Memories</Typography>
+                <Typography  className={classes.heading} variant="h2" alignitems="center">Memories</Typography>
                 <img className={classes.image} src={memories} alt="memories" height="60" />
             </Link>
             <Toolbar className={classes.toolbar}>

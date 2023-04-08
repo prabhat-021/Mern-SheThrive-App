@@ -2,9 +2,9 @@ import { Container, Grid, Grow, Paper, AppBar, TextField, Button } from "@materi
 import Form from "../Form/Form.js";
 import Posts from "../Posts/Posts.js";
 import { useDispatch } from "react-redux";
-import { getPosts, getPostBySearch } from "../../Actions/postAction.js";
+import { getPostBySearch } from "../../Actions/postAction.js";
 import userStyles from "./styles.js";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Paginate from "../Pagination/Pagination.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
@@ -29,7 +29,7 @@ export default function Home() {
 
     // this will going to read our url and see if we have age paramenter
     const page = query.get("page") || 1;
-    const searchQuery = query.get("searchQuery");
+    // const searchQuery = query.get("searchQuery");
 
     // useEffect(() => {
 

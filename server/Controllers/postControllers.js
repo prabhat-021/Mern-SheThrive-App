@@ -11,7 +11,7 @@ export const getPost = async (req, res) => {
         const total = await PostMessage.countDocuments({});
 
         const posts = await PostMessage.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
-        
+
         res.status(200).json({ data: posts, currentPage: Number(page), numberOfPage: Math.ceil(total / LIMIT) });
 
     } catch (error) {
@@ -38,12 +38,12 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
 
-    const { id: _id } = req.params;
+    const { id} = req.params;
     const post = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No Post With This Id");
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("No Post With This Id");
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...post, id }, { new: true });
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, { ...post, id }, { new: true });
     res.json(updatedPost);
 
 }

@@ -1,4 +1,4 @@
-export const postReducer = (state = { posts: [] }, action) => {
+export const postReducer = (state = { isLoading: false, posts: [] }, action) => {
     switch (action.type) {
 
         case "FETCH_ALL":
@@ -11,18 +11,24 @@ export const postReducer = (state = { posts: [] }, action) => {
 
         case "FETCH_BY_SEARCH":
             return {
-                ...state, posts: action.payload
+                ...state, posts: action.payload.data
             };
 
         case "LIKE":
         case "UPDATE":
-            return state.map((post) => post._id === action.payload._id ? action.payload : post);
+            return { ...state, posts: state.posts.map((post) => post._id === action.payload._id ? action.payload : post) };
 
         case "CREATE":
-            return [...state, action.payload];
+            return { ...state, posts: [...state.posts, action.payload] };
 
         case "DELETE":
-            return state.filter((post) => post._id !== action.payload);
+            return { ...state, posts: state.posts.filter((post) => post._id !== action.payload) };
+
+        case "START_LOADING":
+            return { ...state, isLoading: true };
+
+        case "END_LOADING":
+            return { ...state, isLoading: false };
 
         default:
             return state;

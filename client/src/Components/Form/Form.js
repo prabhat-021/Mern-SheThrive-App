@@ -13,7 +13,7 @@ export default function Form({ currentId, setCurrentId }) {
     const classes = useStyles();
     const dispatch = useDispatch();
     // const p =useSelector((state)= state.posts)
-    const post = useSelector((state) => currentId ? state.postReducer.find((p) => p._id === currentId) : null)
+    const post = useSelector((state) => currentId ? state.postReducer.posts.find((p) => p._id === currentId) : null)
     const user = JSON.parse(localStorage.getItem("profile"));
 
     useEffect(() => {
