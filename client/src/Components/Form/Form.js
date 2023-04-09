@@ -50,7 +50,7 @@ export default function Form({ currentId, setCurrentId }) {
     }
 
     return (
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={6}>
             <form autoComplete="off" noValidate className={`${classes.form} ${classes.root}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">{!currentId ? "Creating" : "Updating"} a Memory</Typography>
                 {/* <TextField

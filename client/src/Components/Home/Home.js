@@ -29,7 +29,7 @@ export default function Home() {
 
     // this will going to read our url and see if we have age paramenter
     const page = query.get("page") || 1;
-    // const searchQuery = query.get("searchQuery");
+    const searchQuery = query.get("searchQuery");
 
     // useEffect(() => {
 
@@ -93,9 +93,11 @@ export default function Home() {
                             <Button onClick={searchPost} className={classes.searchButton} color="primary" variant="contained">Search</Button>
                         </AppBar>
                         <Form currentId={currentId} setCurrentId={setCurrentId} />
-                        <Paper className={classes.pagination} elevation={6}>
-                            <Paginate page={page} />
-                        </Paper>
+                        {(!searchQuery && !tags.length) && (
+                            <Paper className={classes.pagination} elevation={6}>
+                                <Paginate page={page} />
+                            </Paper>
+                        )}
                     </Grid>
                 </Grid>
             </Container>
