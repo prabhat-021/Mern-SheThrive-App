@@ -31,7 +31,7 @@ export default function Navbar() {
         }
 
         setUser(JSON.parse(localStorage.getItem("profile")));
-    }, [location,user]);
+    }, [location]);
 
 
     return (

@@ -1,6 +1,6 @@
 import { Container, Grid, Grow, Paper, AppBar, TextField, Button } from "@material-ui/core";
-import Form from "../Form/Form.js";
-import Posts from "../Posts/Posts.js";
+import Form from "../Form/Form.jsx";
+import Posts from "../Posts/Posts.jsx";
 import { useDispatch } from "react-redux";
 import { getPostBySearch } from "../../Actions/postAction.js";
 import userStyles from "./styles.js";

@@ -1,7 +1,7 @@
 import { Container } from "@material-ui/core";
 import Navbar from "./Components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from "./Components/Home/Home.js";
+import Home from "./Components/Home/Home.jsx";
 import Auth from "./Components/Auth/Auth";
 import PostDetails from "./Components/PostDetails/PostDetails.jsx";
 
