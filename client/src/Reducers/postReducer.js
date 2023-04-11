@@ -14,6 +14,11 @@ export const postReducer = (state = { isLoading: false, posts: [] }, action) => 
                 ...state, posts: action.payload.data
             };
 
+        case "FETCH_BY_ID":
+            return {
+                ...state, post: action.payload
+            };
+
         case "LIKE":
         case "UPDATE":
             return { ...state, posts: state.posts.map((post) => post._id === action.payload._id ? action.payload : post) };

@@ -7,10 +7,7 @@ import moment from "moment";
 import { deletePost, likePost } from "../../../Actions/postAction.js";
 import { useDispatch } from "react-redux";
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
-import { Link, useNavigate } from "react-router-dom";
-
-import ButtonBase from '@mui/material/ButtonBase';
-
+import { Link } from "react-router-dom";
 
 
 export default function Post({ post, setCurrentId }) {
@@ -18,7 +15,6 @@ export default function Post({ post, setCurrentId }) {
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem("profile"));
-    const navigate = useNavigate();
 
     const Likes = () => {
         if (post.likes.length > 0) {

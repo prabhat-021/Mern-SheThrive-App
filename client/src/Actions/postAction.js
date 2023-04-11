@@ -86,3 +86,17 @@ export const getPostBySearch = (searchQuery) => async (dispatch) => {
         console.error(error);
     }
 }
+
+export const getPostById = (id) => async (dispatch) => {
+
+    try {
+        dispatch({ type: "START_LOADING" });
+
+        const { data } = await api.fetchPostsById(id);
+        dispatch({ type: "FETCH_BY_ID", payload: data });
+
+        dispatch({ type: "END_LOADING" });
+    } catch (error) {
+        console.error(error);
+    }
+}

@@ -4,6 +4,8 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import moment from "moment";
 import { Paper, Typography, CircularProgress, Divider } from "@material-ui/core";
 import useStyles from "./styles";
+import { getPostById } from "../../Actions/postAction.js";
+
 
 export default function PostDetails() {
 
@@ -12,38 +14,54 @@ export default function PostDetails() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const posts = useSelector((state) => state.postReducer.posts);
-  // const post = useSelector((state) => state.postReducer);
+  const post = useSelector((state) => state.postReducer.post);
   const isLoading = useSelector((state) => state.postReducer.isLoading);
-  // console.log(post);
+  console.log(post);
   console.log(isLoading);
-  console.log(posts)
+  console.log(posts);
+
+  useEffect(() => {
+
+    dispatch(getPostById(id));
+
+  }, [id]);
+
+  if (!post) return null;
+
+  if (isLoading) {
+    return(
+      <Paper elevation={6} className={classes.loadingPaper}>
+        <CircularProgress />
+      </Paper>
+    );
+  }
 
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
       <div className={classes.card}>
         <div className={classes.section}>
-          <Typography variant="h3" component="h2">{posts.title}</Typography>
-          <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{posts.tags.map((tag) => (
+          <Typography variant="h3" component="h2">{post.title}</Typography>
+          <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => (
             <Link to={`/tags/${tag}`} style={{ textDecoration: 'none', color: '#3f51b5' }}>
               {` #${tag} `}
             </Link>
           ))}
           </Typography>
-          <Typography gutterBottom variant="body1" component="p">{posts.message}</Typography>
+          <Typography gutterBottom variant="body1" component="p">{post.message}</Typography>
           <Typography variant="h6">
             Created by:
-            <Link to={`/creators/${posts.name}`} style={{ textDecoration: 'none', color: '#3f51b5' }}>
-              {` ${posts.name}`}
+            <Link to={`/creators/${post.name}`} style={{ textDecoration: 'none', color: '#3f51b5' }}>
+              {` ${post.name}`}
             </Link>
           </Typography>
-          <Typography variant="body1">{moment(posts.createdAt).fromNow()}</Typography>
+          <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: '20px 0' }} />
           <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
           <Divider style={{ margin: '20px 0' }} />
           <Divider style={{ margin: '20px 0' }} />
         </div>
         <div className={classes.imageSection}>
-          <img className={classes.media} src={posts.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={posts.title} />
+          <img className={classes.media} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
         </div>
       </div>
     </Paper>
