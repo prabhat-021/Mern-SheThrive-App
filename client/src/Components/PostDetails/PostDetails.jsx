@@ -4,7 +4,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import moment from "moment";
 import { Paper, Typography, CircularProgress, Divider } from "@material-ui/core";
 import useStyles from "./styles";
-import { getPostById } from "../../Actions/postAction.js";
+import { getPostById, getPostBySearch } from "../../Actions/postAction.js";
 
 
 export default function PostDetails() {
@@ -26,15 +26,23 @@ export default function PostDetails() {
 
   }, [id]);
 
+  // useEffect(() => {
+
+  //   dispatch(getPostBySearch({ search: "none", tags: post?.tags.join(",") }));
+
+  // }, [post]);
+
   if (!post) return null;
 
   if (isLoading) {
-    return(
+    return (
       <Paper elevation={6} className={classes.loadingPaper}>
         <CircularProgress />
       </Paper>
     );
   }
+
+  const recommendedPosts = posts.filter(({ _id }) => _id === post._id);
 
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
@@ -64,6 +72,21 @@ export default function PostDetails() {
           <img className={classes.media} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
         </div>
       </div>
+      {recommendedPosts.length && (
+        <div className={classes.section}>
+          <Typography gutterBottom variant='h5' >
+            You might also like :
+          </Typography>
+          <Divider />
+          <div className={classes.recommendedPosts}>
+            {recommendedPosts.map(({ title, message, name, likes, selectedFile, _id }) => (
+              <div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </Paper>
   );
 }
