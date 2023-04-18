@@ -25,7 +25,7 @@ export default function PostDetails() {
 
     dispatch(getPostById(id));
 
-  }, [id, dispatch]);
+  }, [id]);
 
   // useEffect(() => {
 

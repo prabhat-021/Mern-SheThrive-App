@@ -105,10 +105,12 @@ export const getPostById = (id) => async (dispatch) => {
 export const commentPost = (value, id) => async (dispatch) => {
 
     try {
-        await api.comment(value, id);
+        const { data } = await api.comment(value, id);
+        // console.log(data);
+        dispatch({ type: "COMMENT", payload: data });
 
+        return data.comments;
     } catch (error) {
-        
         console.error(error);
     }
 
