@@ -8,7 +8,7 @@ export default function Posts({ setCurrentId }) {
     const classes = useStyles();
     const posts = useSelector((state) => state.postReducer.posts);
     const isLoading = useSelector((state) => state.postReducer.isLoading);
-    console.log(posts);
+    // console.log(posts);
 
     if (!posts.length && !isLoading) return "No Posts"
 

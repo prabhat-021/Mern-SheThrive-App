@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import postRoutes from "./routes/postRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import path from "path";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -39,6 +40,20 @@ const connectDb = async () => {
         console.error(error);
         process.exit();
     }
+}
+
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/build")));
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    })
+} else {
+    
+    app.get("/", (req, res) => {
+        res.send("API is running...");
+    });
 }
 
 connectDb();

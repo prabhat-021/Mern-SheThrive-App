@@ -14,7 +14,7 @@ export default function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    console.log(user);
+    // console.log(user);
 
     function logout() {
         dispatch({ type: "LOGOUT" });
@@ -22,22 +22,23 @@ export default function Navbar() {
         setUser(null);
     }
 
+    const token = user?.token;
     useEffect(() => {
-        const token = user?.token;
 
         if (token) {
             const decodedToken = decode(token);
-            if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+            if (decodedToken.exp * 1000 < new Date().getTime()) {
+                logout();
+            }
         }
-
         setUser(JSON.parse(localStorage.getItem("profile")));
-    }, [location]);
+    }, [location, token]);
 
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
             <Link to="/" className={classes.brandContainer}>
-                <Typography  className={classes.heading} variant="h2" alignitems="center">Memories</Typography>
+                <Typography className={classes.heading} variant="h2" alignitems="center">Memories</Typography>
                 <img className={classes.image} src={memories} alt="memories" height="60" />
             </Link>
             <Toolbar className={classes.toolbar}>

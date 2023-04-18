@@ -4,7 +4,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import moment from "moment";
 import { Paper, Typography, CircularProgress, Divider } from "@material-ui/core";
 import useStyles from "./styles";
-import { getPostById, getPostBySearch } from "../../Actions/postAction.js";
+import { getPostById } from "../../Actions/postAction.js";
 import CommentSection from './CommentSection.jsx';
 
 
@@ -17,15 +17,15 @@ export default function PostDetails() {
   const posts = useSelector((state) => state.postReducer.posts);
   const post = useSelector((state) => state.postReducer.post);
   const isLoading = useSelector((state) => state.postReducer.isLoading);
-  console.log(post);
-  console.log(isLoading);
-  console.log(posts);
+  // console.log(post);
+  // console.log(isLoading);
+  // console.log(posts);
 
   useEffect(() => {
 
     dispatch(getPostById(id));
 
-  }, [id]);
+  }, [id,dispatch]);
 
   // useEffect(() => {
 
