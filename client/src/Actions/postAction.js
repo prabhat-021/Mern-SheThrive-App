@@ -78,6 +78,7 @@ export const getPostBySearch = (searchQuery) => async (dispatch) => {
     try {
         dispatch({ type: "START_LOADING" });
 
+        console.log(searchQuery);
         const { data: { data } } = await api.fetchPostsBySearch(searchQuery);
         dispatch({ type: "FETCH_BY_SEARCH", payload: { data } });
 
@@ -99,4 +100,16 @@ export const getPostById = (id) => async (dispatch) => {
     } catch (error) {
         console.error(error);
     }
+}
+
+export const commentPost = (value, id) => async (dispatch) => {
+
+    try {
+        await api.comment(value, id);
+
+    } catch (error) {
+        
+        console.error(error);
+    }
+
 }

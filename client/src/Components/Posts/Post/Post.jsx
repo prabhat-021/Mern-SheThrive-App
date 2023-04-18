@@ -42,8 +42,8 @@ export default function Post({ post, setCurrentId }) {
     // }
 
     return (
-        <Card className={classes.card} component={Link} to={`/posts/${post._id}`}>
-            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
+        <Card className={classes.card} >
+            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} component={Link} to={`/posts/${post._id}`}/>
             <div className={classes.overlay}>
                 <Typography variant="h6">{post.name}</Typography>
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
@@ -56,7 +56,7 @@ export default function Post({ post, setCurrentId }) {
                         </Button>
                     </div>
                 )}
-            <div className={classes.details}>
+            <div className={classes.details} component={Link} to={`/posts/${post._id}`}>
                 <Typography variant="body2" color="textSecondary">{post.tags.map((tags) => `#${tags}`)}</Typography>
             </div>
             <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
