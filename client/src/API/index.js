@@ -13,8 +13,8 @@ axios.interceptors.request.use((req) => {
 // POST 
 
 export const fetchPosts = (page) => axios.get(`/posts?page=${page}`);
-export const fetchPostsById = (id) => axios.get(`/posts/${id}`);
-export const fetchPostsBySearch = (searchQuery) => axios.get(`/posts/search?searchQuery=${searchQuery.search || "none"}&tags=${searchQuery.tags}`);
+export const fetchPostsById = (id) => axios.get(`/posts/${id}/id`);
+export const fetchPostsBySearch = (searchQuery) => axios.get(`/posts/search?searchQuery=${searchQuery.search || "none" }&tags=${searchQuery.tags}`);
 export const createPost = (newPost) => axios.post(url, newPost);
 export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
 export const deletePost = (id) => axios.delete(`${url}/${id}`);

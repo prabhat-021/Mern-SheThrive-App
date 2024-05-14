@@ -1,0 +1,9 @@
+#myAppBar {
+  display: flex;
+  /* Other styles here */
+  flex-direction: row;
+}
+
+#bold{
+  font-weight: 500;
+}

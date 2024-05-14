@@ -40,7 +40,7 @@ export default function Home() {
     function handleKeyPress(e) {
         if (e.keyCode === 13) {
             // search post 
-            searchPost1();
+            searchPost();
         }
 
     };
@@ -52,10 +52,6 @@ export default function Home() {
     function handleDelete(deleteTag) {
         setTags(tags.filter((tag) => tag !== deleteTag))
     };
-
-    function searchPost1() {
-
-    }
 
     function searchPost() {
         if (search.trim() || tags) {
@@ -94,7 +90,7 @@ export default function Home() {
                                 label="Search Tags"
                                 variant="outlined"
                             />
-                            <Button onClick={searchPost1} className={classes.searchButton} color="primary" variant="contained">Search</Button>
+                            <Button onClick={searchPost} className={classes.searchButton} color="primary" variant="contained">Search</Button>
                         </AppBar>
                         <Form currentId={currentId} setCurrentId={setCurrentId} />
                         {(!searchQuery && !tags.length) && (

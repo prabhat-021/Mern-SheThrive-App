@@ -97,6 +97,16 @@ export const getPostsBySearch = async (req, res) => {
     }
 }
 
+// export const get = async (req, res) => {
+//     try {
+//         const posts = await PostMessage.find();
+//         res.json({ data: posts });
+//     } catch (error) {
+//         console.error("Error in getPostsBySearch:", error);
+//         res.status(500).json({ message: "Internal server error" });
+//     }
+// }
+
 export const getPostsById = async (req, res) => {
 
     const { id } = req.params;
@@ -119,7 +129,7 @@ export const commentPost = async (req, res) => {
     try {
         const post = await PostMessage.findById(id);
         post.comments.push(value);
-        
+
         const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
 
         res.json(updatedPost);

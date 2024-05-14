@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
+import "./styles.css";
 
 export default function Navbar() {
 
@@ -36,11 +37,17 @@ export default function Navbar() {
 
 
     return (
-        <AppBar className={classes.appBar} position="static" color="inherit">
+        <AppBar className={classes.appBar} position="static" color="inherit" id="myAppBar">
             <Link to="/" className={classes.brandContainer}>
-                <Typography className={classes.heading} variant="h2" alignitems="center">Memories</Typography>
+                <Typography className={classes.heading} variant="h2" alignitems="center" id="bold">SheThrive</Typography>
                 <img className={classes.image} src={memories} alt="memories" height="60" />
             </Link>
+            {/* <Button component={Link} to="https://technocrats.live/" variant="contained" color="secondary">
+                Resources
+            </Button>
+            <Button component={Link} to="https://www.linkedin.com/feed/" variant="contained" color="secondary">
+                Opportunities
+            </Button> */}
             <Toolbar className={classes.toolbar}>
                 {user ? (
                     <div className={classes.profile}>

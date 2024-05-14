@@ -14,8 +14,12 @@ export default makeStyles((theme) => ({
       flexDirection: 'column',
     },
   },
+  color: {
+    color: '#8F887E',
+  },
   heading: {
-    color: theme.palette.primary.main,
+    // color: theme.palette.primary.main,
+    color: '#8F887E',
     textDecoration: 'none',
     fontSize: '7vmin',
     fontWeight: 300,
@@ -54,7 +58,7 @@ export default makeStyles((theme) => ({
   brandContainer: {
     display: 'flex',
     alignItems: 'center',
-    textDecoration:"none"
+    textDecoration: "none"
   },
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
