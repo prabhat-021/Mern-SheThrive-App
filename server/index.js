@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import postRoutes from "./routes/postRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-import path from "path";
+// import path from "path";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -13,7 +13,7 @@ const app = express();
 
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://mern-she-thrive-app.vercel.app/',
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }
