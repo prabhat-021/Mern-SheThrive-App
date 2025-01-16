@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/material/styles';
 
 export default makeStyles((theme) => ({
     media: {
@@ -51,3 +51,7 @@ export default makeStyles((theme) => ({
         marginRight: '30px',
     },
 }));
+
+// "@mui/material": "^4.12.4",
+// "@mui/icons-material": "^4.11.3",
+// "@material-ui/lab": "^4.0.0-alpha.61",

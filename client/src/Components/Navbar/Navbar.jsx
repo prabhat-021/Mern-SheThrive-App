@@ -1,5 +1,5 @@
 import useStyles from "./styles.js";
-import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Avatar, Button, Toolbar, Typography } from '@mui/material';
 import memories from "../../images/memories.png";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";

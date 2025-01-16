@@ -1,4 +1,4 @@
-import { Container, Grid, Grow, Paper, AppBar, TextField, Button } from "@material-ui/core";
+import { Container, Grid, Grow, Paper, AppBar, TextField, Button } from "@mui/material";
 import Form from "../Form/Form.jsx";
 import Posts from "../Posts/Posts.jsx";
 import { useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import userStyles from "./styles.js";
 import { useState } from "react";
 import Paginate from "../Pagination/Pagination.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
-import ChipInput from "material-ui-chip-input";
+import { Chip } from '@mui/material';
 
 // Constructor
 // The URLSearchParams interface defines utility methods to work with the query string of a URL.
@@ -82,7 +82,7 @@ export default function Home() {
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
                             />
-                            <ChipInput
+                            <Chip
                                 style={{ margin: "10px 0" }}
                                 value={tags}
                                 onAdd={handleAdd}

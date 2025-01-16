@@ -1,6 +1,6 @@
-import { Avatar, Button, Container, Grid, Paper, Typography } from "@material-ui/core";
+import { Avatar, Button, Container, Grid, Paper, Typography } from "@mui/material";
 import useStyles from "./styles.js";
-import LockOutlineIcon from "@material-ui/icons/LockOutlined";
+import LockOutlineIcon from "@mui/icons-material/LockOutlined";
 import Input from "./Input.js";
 import { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";

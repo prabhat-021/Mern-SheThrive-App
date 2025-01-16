@@ -1,12 +1,12 @@
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from "@material-ui/core";
+import { Card, CardActions, CardContent, CardMedia, Button, Typography } from "@mui/material";
 import useStyles from "./style.js";
-import ThumbUpAlt from "@material-ui/icons/ThumbUpAlt";
-import DeleteIcon from "@material-ui/icons/Delete";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import ThumbUpAlt from "@mui/icons-material/ThumbUpAlt";
+import DeleteIcon from "@mui/icons-material/Delete";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import moment from "moment";
 import { deletePost, likePost } from "../../../Actions/postAction.js";
 import { useDispatch } from "react-redux";
-import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
+import ThumbUpAltOutlined from '@mui/icons-material/ThumbUpAltOutlined';
 import { Link } from "react-router-dom";
 
 

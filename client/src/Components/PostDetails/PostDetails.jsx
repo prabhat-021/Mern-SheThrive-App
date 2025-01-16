@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import moment from "moment";
-import { Paper, Typography, CircularProgress, Divider } from "@material-ui/core";
+import { Paper, Typography, CircularProgress, Divider } from "@mui/material";
 import useStyles from "./styles";
 import { getPostById } from "../../Actions/postAction.js";
 import CommentSection from './CommentSection.jsx';
