@@ -13,7 +13,7 @@ const app = express();
 
 
 const corsOptions = {
-    origin: 'https://mern-she-thrive-front.vercel.app/',
+    origin: ['https://mern-she-thrive-front.vercel.app', 'http://localhost:3000'],
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }
