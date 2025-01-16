@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
   appBarSearch: {
@@ -12,9 +12,9 @@ export default makeStyles((theme) => ({
     marginTop: '1rem',
     padding: '16px',
   },
-  mainContainer: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-    },
-  },
+  // mainContainer: {
+  //   [theme.breakpoints.down('xs')]: {
+  //     flexDirection: 'column-reverse',
+  //   },
+  // },
 }));

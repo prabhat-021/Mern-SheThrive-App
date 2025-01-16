@@ -1,5 +1,4 @@
-import { makeStyles } from '@mui/material/styles';
-import { deepPurple } from '@mui/material/colors';
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
   appBar: {
@@ -10,9 +9,6 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-    },
   },
   color: {
     color: '#8F887E',
@@ -32,20 +28,20 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
     width: '400px',
-    [theme.breakpoints.down('sm')]: {
-      width: 'auto',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   width: 'auto',
+    // },
   },
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
     width: '400px',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
-      width: 'auto',
-      marginTop: 20,
-      justifyContent: 'center',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   width: 'auto',
+    //   marginTop: 20,
+    //   justifyContent: 'center',
+    // },
   },
   logout: {
     marginLeft: '20px',
@@ -61,7 +57,7 @@ export default makeStyles((theme) => ({
     textDecoration: "none"
   },
   purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
+    color: '#673ab7',
+    backgroundColor: '#673ab7',
   },
 }));
