@@ -14,7 +14,6 @@ export default makeStyles((theme) => ({
     color: '#8F887E',
   },
   heading: {
-    // color: theme.palette.primary.main,
     color: '#8F887E',
     textDecoration: 'none',
     fontSize: '7vmin',
@@ -28,20 +27,12 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
     width: '400px',
-    // [theme.breakpoints.down('sm')]: {
-    //   width: 'auto',
-    // },
   },
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
     width: '400px',
     alignItems: 'center',
-    // [theme.breakpoints.down('sm')]: {
-    //   width: 'auto',
-    //   marginTop: 20,
-    //   justifyContent: 'center',
-    // },
   },
   logout: {
     marginLeft: '20px',

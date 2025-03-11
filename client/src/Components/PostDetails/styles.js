@@ -11,10 +11,6 @@ export default makeStyles((theme) => ({
   card: {
     display: 'flex',
     width: '100%',
-    // [theme.breakpoints.down('sm')]: {
-    //   flexWrap: 'wrap',
-    //   flexDirection: 'column',
-    // },
   },
   section: {
     borderRadius: '20px',
@@ -23,15 +19,9 @@ export default makeStyles((theme) => ({
   },
   imageSection: {
     marginLeft: '20px',
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 0,
-    },
   },
   recommendedPosts: {
     display: 'flex',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-    },
   },
   loadingPaper: {
     display: 'flex',
